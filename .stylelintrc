@@ -1,0 +1,19 @@
+{
+  "processors": ["stylelint-processor-styled-components"],
+  "extends": [
+    "stylelint-config-alexandernanberg",
+    "stylelint-config-styled-components",
+    "stylelint-config-prettier"
+  ],
+  "rules": {
+    "declaration-empty-line-before": null,
+    "comment-empty-line-before": null,
+    "declaration-colon-newline-after": null,
+    "value-list-max-empty-lines": null,
+    "declaration-block-semicolon-newline-after": null,
+    "rule-empty-line-before": null,
+    "no-duplicate-selectors": null,
+    "selector-type-no-unknown": null,
+    "selector-type-case": null
+  }
+}

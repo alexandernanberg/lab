@@ -1,0 +1,17 @@
+{
+  "name": "@alexandernanberg/lab",
+  "private": true,
+  "workspaces": [
+    "experiments/*"
+  ],
+  "devDependencies": {
+    "eslint": "5.6.0",
+    "eslint-config-alexandernanberg": "^1.5.1",
+    "prettier": "^1.16.1",
+    "stylelint": "^9.10.1",
+    "stylelint-config-alexandernanberg": "^1.1.1",
+    "stylelint-config-prettier": "^5.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.5.2"
+  }
+}

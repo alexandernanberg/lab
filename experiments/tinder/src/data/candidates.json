@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Leanne Graham",
+    "age": 2,
+    "city": "Gwenborough",
+    "image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&h=600&w=600"
+  },
+  {
+    "name": "Ervin Howell",
+    "age": 7,
+    "city": "South Christy",
+    "image": "https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg?auto=compress&cs=tinysrgb&h=600&w=600"
+  },
+  {
+    "name": "Mr. Dennis Schulist",
+    "age": 18,
+    "city": "Aliyaview",
+    "image": "https://images.pexels.com/photos/691583/pexels-photo-691583.jpeg?auto=compress&cs=tinysrgb&h=600&w=600"
+  },
+  {
+    "name": "Mr. Dennis Schulist",
+    "age": 18,
+    "city": "Aliyaview",
+    "image": "https://images.pexels.com/photos/1663417/pexels-photo-1663417.jpeg?auto=compress&cs=tinysrgb&h=600&w=600"
+  },
+  {
+    "name": "Nicholas Runolfsdottir",
+    "age": 7,
+    "city": "Bartholomebury",
+    "image": "https://images.pexels.com/photos/416135/pexels-photo-416135.jpeg?auto=compress&cs=tinysrgb&h=600&w=600"
+  }
+]
