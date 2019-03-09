@@ -1,5 +1,5 @@
 {
-  "name": "@alexandernanberg/tinder",
+  "name": "@alexandernanberg/tinder-for-cats",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
@@ -7,7 +7,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "now-build": "react-scripts build"
+    "now-build": "react-scripts build",
+    "deploy": "now && now alias"
   },
   "dependencies": {
     "prop-types": "^15.6.2",
