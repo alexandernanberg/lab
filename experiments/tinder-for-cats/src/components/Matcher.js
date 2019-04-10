@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components'
 import { useGesture } from 'react-with-gesture'
-import { useSprings, animated, interpolate, config } from 'react-spring'
+import { useSprings, animated, interpolate } from 'react-spring'
 import Card from './Card'
 import candidates from '../data/candidates.json'
 
@@ -25,17 +25,23 @@ const Wrapper = styled.div`
   }
 `
 
+const ACTIONS = {
+  nope: 0,
+  like: 1,
+  superlike: 2,
+}
+
 function getAction([deltaX, deltaY]) {
   if (deltaX > 112) {
-    return 'like'
+    return ACTIONS.like
   }
 
   if (deltaX < -112) {
-    return 'nope'
+    return ACTIONS.nope
   }
 
   // if (deltaY > 108) {
-  //   return 'superlike'
+  //   return ACTIONS.superlike
   // }
 
   return null
@@ -55,13 +61,13 @@ export default function Matcher() {
       event.preventDefault()
 
       const action = getAction([deltaX, deltaY])
-      const dir = action === 'like' ? 1 : -1
+      const dir = action === ACTIONS.like ? 1 : -1
 
       if (!down && !!action) {
         gone.current.add(index)
       }
 
-      set((i) => {
+      set(i => {
         const isGone = gone.current.has(index)
 
         // Next item
