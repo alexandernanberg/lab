@@ -14,7 +14,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
-    "react-scripts": "^3.0.0-next.b0cbf2ca",
+    "react-scripts": "^3.0.0",
     "react-spring": "^8.0.5",
     "react-with-gesture": "^4.0.5",
     "styled-components": "^4.1.3",
