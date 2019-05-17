@@ -23,7 +23,7 @@
     "eslint": "^5.15.1",
     "eslint-config-alexandernanberg": "^1.7.0",
     "prettier": "^1.16.4",
-    "stylelint": "^9.10.1",
+    "stylelint": "^10.0.0",
     "stylelint-config-alexandernanberg": "^1.3.0"
   }
 }
