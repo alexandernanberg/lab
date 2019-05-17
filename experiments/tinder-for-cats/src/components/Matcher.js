@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components'
-import { useGesture } from 'react-with-gesture'
+import { useGesture } from 'react-use-gesture'
 import { useSprings, animated, interpolate } from 'react-spring'
 import Card from './Card'
 import candidates from '../data/candidates.json'
@@ -57,7 +57,7 @@ export default function Matcher() {
   }))
   const bindGesture = useGesture({
     passive: { passive: false },
-    onAction: ({ event, args: [index], down, delta: [deltaX, deltaY] }) => {
+    onDrag: ({ event, args: [index], down, delta: [deltaX, deltaY] }) => {
       event.preventDefault()
 
       const action = getAction([deltaX, deltaY])
