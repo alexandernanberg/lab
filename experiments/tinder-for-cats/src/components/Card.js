@@ -91,7 +91,10 @@ const Wrapper = styled.article`
   }
 `
 
-export function Card({ name, image, city, age, ...props }, ref) {
+export default React.forwardRef(function Card(
+  { name, image, city, age, ...props },
+  ref,
+) {
   return (
     <Wrapper ref={ref} {...props}>
       <div data-like>Like</div>
@@ -107,6 +110,4 @@ export function Card({ name, image, city, age, ...props }, ref) {
       </header>
     </Wrapper>
   )
-}
-
-export default React.forwardRef(Card)
+})

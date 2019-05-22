@@ -55,9 +55,8 @@ export default function Matcher() {
     scale: i === candidates.length - 1 ? 1 : 0.95,
     rotate: 0,
   }))
-  const bindGesture = useGesture({
-    passive: { passive: false },
-    onDrag: ({ event, args: [index], down, delta: [deltaX, deltaY] }) => {
+  const bind = useGesture(
+    ({ event, args: [index], down, delta: [deltaX, deltaY] }) => {
       event.preventDefault()
 
       const action = getAction([deltaX, deltaY])
@@ -85,6 +84,7 @@ export default function Matcher() {
         // Current item
         if (index === i) {
           let x = down ? deltaX : 0
+          // TODO: Use a better check here. Probably factor in velocity.
           if (isGone) {
             x = (200 + window.innerWidth) * dir
           }
@@ -93,6 +93,7 @@ export default function Matcher() {
             x,
             y: down ? deltaY : 0,
             scale: 1,
+            // TODO: Rotate based on y.
             rotate: down ? deltaX / 3 : 0,
             immediate: down,
           }
@@ -114,18 +115,21 @@ export default function Matcher() {
         }, 600)
       }
     },
-  })
+    { event: { passive: false } },
+  )
 
   return (
     <Wrapper>
       <div>
         {springs.map(({ x, y, scale, rotate }, i) => {
+          const data = candidates[i]
+
           return (
             <Card
-              {...bindGesture(i)}
-              {...candidates[i]}
+              {...bind(i)}
+              {...data}
               as={animated.article}
-              key={i}
+              key={data.id}
               style={{
                 '--like-opacity': x.interpolate(o => Math.min(o / 100, 1)),
                 '--dislike-opacity': x.interpolate(o =>
@@ -133,8 +137,8 @@ export default function Matcher() {
                 ),
                 transform: interpolate(
                   [x, y, scale, rotate],
-                  (x, y, s, r) =>
-                    `translate3d(${x}px,${y}px,0) scale(${s}) rotate(${r /
+                  (transX, transY, s, r) =>
+                    `translate3d(${transX}px,${transY}px,0) scale(${s}) rotate(${r /
                       10}deg)`,
                 ),
               }}
