@@ -45,13 +45,13 @@ export default function Player({ src, title, markers }) {
       // TODO: This should be done in a more effective way. Currently we loop
       // thorugh the entire markers array every time currentTime changes, this
       // might the expensive if the podcast is long and have a lot of markers.
-      const nextActiveMarkerIndex = markers.findIndex((m) => {
+      const nextActiveMarkerIndex = markers.findIndex(m => {
         return isBetween(currentTime, m.start, m.start + m.duration)
       })
 
       setActiveMarkerIndex(nextActiveMarkerIndex)
     }
-  }, [currentTime, isPlaying])
+  }, [currentTime, isPlaying, markers])
 
   function onTimeUpdate({ target }) {
     setCurrentTime(target.currentTime || 0)
@@ -88,13 +88,13 @@ export default function Player({ src, title, markers }) {
           aria-valuemax={duration}
           aria-valuenow={currentTime}
           aria-valuetext={`${formattedCurrentTime} of ${formattedDuration}`}
-          onChange={(event) => {
+          onChange={event => {
             // TODO: Fix a bug when this fires right after rewind/forward which
             // overwrites that action.
             // TODO: Probably better to pause playback while seeking.
             setCurrentTime(Number(event.target.value))
           }}
-          onKeyDown={(event) => {
+          onKeyDown={event => {
             switch (event.key) {
               case 'ArrowRight':
               case 'ArrowUp':

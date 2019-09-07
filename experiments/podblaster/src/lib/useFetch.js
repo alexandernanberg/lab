@@ -23,13 +23,14 @@ export default function useFetch(args) {
 
     fetch(args)
       .then(response => response.json())
-      .then((data) => {
+      .then(data => {
         dispatch({ type: 'success', payload: data })
       })
       .catch(() => {
         dispatch({ type: 'error' })
       })
-  }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(args)])
 
   return state
 }

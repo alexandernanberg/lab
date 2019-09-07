@@ -99,13 +99,14 @@ export function useAPI(endpoint, args) {
     dispatch({ type: 'loading' })
 
     endpoint(args)
-      .then((data) => {
+      .then(data => {
         dispatch({ type: 'success', payload: data })
       })
       .catch(() => {
         dispatch({ type: 'error' })
       })
-  }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(args)])
 
   return state
 }
