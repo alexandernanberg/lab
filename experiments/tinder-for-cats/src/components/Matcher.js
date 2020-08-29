@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components'
-import { useGesture } from 'react-use-gesture'
+import { useDrag } from 'react-use-gesture'
 import { useSprings, animated, interpolate } from 'react-spring'
 import Card from './Card'
 import candidates from '../data/candidates.json'
@@ -31,16 +31,16 @@ const ACTIONS = {
   superlike: 2,
 }
 
-function getAction([deltaX, deltaY]) {
-  if (deltaX > 112) {
+function getAction([movementX, movementY]) {
+  if (movementX > 112) {
     return ACTIONS.like
   }
 
-  if (deltaX < -112) {
+  if (movementX < -112) {
     return ACTIONS.nope
   }
 
-  // if (deltaY > 108) {
+  // if (movementY > 108) {
   //   return ACTIONS.superlike
   // }
 
@@ -55,11 +55,11 @@ export default function Matcher() {
     scale: i === candidates.length - 1 ? 1 : 0.95,
     rotate: 0,
   }))
-  const bind = useGesture(
-    ({ event, args: [index], down, delta: [deltaX, deltaY] }) => {
+  const bind = useDrag(
+    ({ event, args: [index], down, movement: [movementX, movementY] }) => {
       event.preventDefault()
 
-      const action = getAction([deltaX, deltaY])
+      const action = getAction([movementX, movementY])
       const dir = action === ACTIONS.like ? 1 : -1
 
       if (!down && !!action) {
@@ -71,7 +71,7 @@ export default function Matcher() {
 
         // Next item
         if (index === i + 1) {
-          const base = Math.max(Math.abs(deltaX), Math.abs(deltaY))
+          const base = Math.max(Math.abs(movementX), Math.abs(movementY))
           let scale = down ? Math.min(base / 6000 + 0.95, 1) : 0.95
           if (isGone) {
             scale = 1
@@ -83,7 +83,7 @@ export default function Matcher() {
 
         // Current item
         if (index === i) {
-          let x = down ? deltaX : 0
+          let x = down ? movementX : 0
           // TODO: Use a better check here. Probably factor in velocity.
           if (isGone) {
             x = (200 + window.innerWidth) * dir
@@ -91,10 +91,10 @@ export default function Matcher() {
 
           return {
             x,
-            y: down ? deltaY : 0,
+            y: down ? movementY : 0,
             scale: 1,
             // TODO: Rotate based on y.
-            rotate: down ? deltaX / 3 : 0,
+            rotate: down ? movementX / 3 : 0,
             immediate: down,
           }
         }

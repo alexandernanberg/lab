@@ -5,10 +5,10 @@
     "experiments/*"
   ],
   "devDependencies": {
-    "eslint": "^6.2.0",
-    "eslint-config-alexandernanberg": "^1.11.0",
-    "prettier": "^1.16.1",
-    "stylelint": "^10.0.0",
-    "stylelint-config-alexandernanberg": "^1.4.0"
+    "eslint": "^7.7.0",
+    "eslint-config-alexandernanberg": "^1.11.4",
+    "prettier": "^2.1.1",
+    "stylelint": "^13.6.1",
+    "stylelint-config-alexandernanberg": "^1.5.6"
   }
 }
